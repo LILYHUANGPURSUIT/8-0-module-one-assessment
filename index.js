@@ -209,25 +209,28 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
  */
 
  function _formattedPrice(str){
-  return +(str.slice(1))
+  let info = (str.slice(1)).split("")
+  let value = ',';
+  info = info.filter(ele => ele !== value)
+  
+  return +info.join("")
 }
 
 function getBiggestBoxOfficeMovie(movies) {
   if (movies.length === 0){
     return null;
   }
-
   let biggestBoxOfficeObj = movies[0];
   for(let movie of movies){
     let currentBoxOffice = _formattedPrice(movie.boxOffice);
     let biggestBoxOffice = _formattedPrice(biggestBoxOfficeObj.boxOffice);
     if(currentBoxOffice > biggestBoxOffice){
-      biggestBoxOfficeObj = movie
+      biggestBoxOfficeObj = movie;
     }
   }
   return biggestBoxOfficeObj.title;
 }
-
+// console.log(getBiggestBoxOfficeMovie(exampleMovies));
 // Do not change anything below this line.
 module.exports = {
   getAllMovieTitles,
