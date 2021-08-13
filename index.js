@@ -189,7 +189,7 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
   let date;
   for(let movie of movies){
     date = movie.released.split(" ");
-    if(date[date.length-1] <= year){
+    if(+date[date.length-1] <= year){
       moviesArr.push(movie);
     }
   }
